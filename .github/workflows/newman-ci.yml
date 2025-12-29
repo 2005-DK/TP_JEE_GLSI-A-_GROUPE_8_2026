@@ -19,7 +19,10 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Build with Maven
+      - name: Run Maven tests
+        run: mvn -B test
+
+      - name: Build with Maven (package)
         run: mvn -B -DskipTests package
 
       - name: Run application
