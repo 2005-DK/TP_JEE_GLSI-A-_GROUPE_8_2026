@@ -190,3 +190,11 @@ Next steps I can help with:
 - Scaffold a minimal Angular frontend that calls the APIs.
 
 If you want me to finalize `SUBMISSION.md` now, choose that option and I will update the file with a submission checklist and commands.
+
+**Authors / Auteurs**
+
+- Member 1: APETI DOSSEH  GitHub: https://github.com/USERNAME1
+- Member 2: Full Name  GitHub: https://github.com/USERNAME2
+- Member 3: Full Name  GitHub: https://github.com/USERNAME3
+
+Please replace the https://github.com/USERNAME# placeholders with each member's actual GitHub profile URL before final submission.
