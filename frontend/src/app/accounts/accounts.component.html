@@ -1,0 +1,9 @@
+<h3>Accounts</h3>
+<div *ngIf="accounts?.length===0">No accounts found</div>
+<ul>
+  <li *ngFor="let a of accounts">
+    {{a.accountNumber}} - {{a.type}} - Balance: {{a.balance}}
+    <button (click)="deposit(a.accountNumber)">Deposit</button>
+    <button (click)="withdraw(a.accountNumber)">Withdraw</button>
+  </li>
+</ul>

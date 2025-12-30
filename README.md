@@ -117,5 +117,76 @@ curl -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/accounts/FR001
 
 CI notes:
 - The repository includes `docs/postman_collection.json` and a `.github/workflows/newman-ci.yml` workflow that runs the collection with Newman after building the app.
+ 
+Environment variables
+---------------------
 
-If you want, I can add detailed request/response examples for each endpoint or include OpenAPI/Swagger generation next.
+The application reads some settings from `application.properties` and from environment variables. Important ones:
+
+- `JWT_SECRET` (recommended): the secret used to sign JWT tokens. You can also set `jwt.secret` in `application.properties` for development. If no secret is provided the application will generate an ephemeral key (development only).
+- `jwt.expiration-ms` (optional): token validity in milliseconds. Default is set in `application.properties`.
+
+Set the `JWT_SECRET` in PowerShell (session):
+
+```powershell
+$env:JWT_SECRET = "your-very-secret-value"
+```
+
+Or on Unix/macOS:
+
+```bash
+export JWT_SECRET="your-very-secret-value"
+```
+
+Security note: prefer injecting secrets using your CI/CD secrets store or a secrets manager (Vault, GitHub Secrets, etc.).
+
+Run & tests
+-----------
+
+Run application (development):
+
+Windows (PowerShell):
+
+```powershell
+.\mvnw.cmd clean package
+.\mvnw.cmd spring-boot:run
+```
+
+Unix/macOS:
+
+```bash
+./mvnw clean package
+./mvnw spring-boot:run
+```
+
+Run unit & integration tests:
+
+```bash
+.\mvnw.cmd test
+```
+
+Run Postman collection locally with Newman (requires Node.js):
+
+```bash
+npm install -g newman
+newman run docs/postman_collection.json --env-var "baseUrl=http://localhost:8080" --timeout-request 30000
+```
+
+Submission & checklist
+----------------------
+
+Please follow the `SUBMISSION.md` instructions in the repository root. Quick checklist:
+
+- Ensure the repository name follows the required format: `TP_JEE_GLSI<A|B>_GROUPE_<NumGroupe>_2026`.
+- Verify each member has at least one commit associated with their GitHub account.
+- Add the three GitHub usernames in `README.md` (Authors section).
+- Create a Git tag for the final submission, e.g. `v1.0-submission` and push it.
+- Optionally create a release and attach a ZIP of the project (CI can produce artefact).
+
+Next steps I can help with:
+
+- Add detailed request/response examples or OpenAPI/Swagger.
+- Finalize `SUBMISSION.md` with a compact checklist and tag/release commands.
+- Scaffold a minimal Angular frontend that calls the APIs.
+
+If you want me to finalize `SUBMISSION.md` now, choose that option and I will update the file with a submission checklist and commands.

@@ -1,0 +1,7 @@
+<h3>Login</h3>
+<form (submit)="onSubmit($event)">
+  <label>Username <input name="username" [(ngModel)]="username"></label><br>
+  <label>Password <input name="password" type="password" [(ngModel)]="password"></label><br>
+  <button type="submit">Login</button>
+</form>
+<p *ngIf="error" style="color:red">{{error}}</p>
